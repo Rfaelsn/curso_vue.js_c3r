@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="caixas">
+            <div class="demo" :class="estilo1" @click="aplicaC1 = !aplicaC1"></div>
+            <div class="demo"></div>
+            <!-- <div class="demo" :class="[classeCSS, 'girar']"></div>-->
+            <div class="demo" :class="[classeCSS,{girar: aplicaGirar}]"></div>
+        </div>
+        <hr>
+        <input type="text" v-model="classeCSS">
+        <!--<div class="demo" :class="{c1:aplicaC1, c2:!aplicaC1}" @click="aplicaC1 = !aplicaC1"></div>-->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                aplicaC1: false,
+                classeCSS: 'c1',
+                aplicaGirar: true,
+            },
+            computed:{
+                estilo1(){
+                    return{
+                        c1: this.aplicaC1,
+                        c2: !this.aplicaC1
+                    }
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .caixas{
+            display: flex;
+            justify-content: space-around;
+        }
+        .demo{
+            width: 100px;
+            height: 100px;
+            background: gray;
+        }
+
+        .c1{
+            background: red;
+        }
+
+        .c2{
+            background: green;
+        }
+
+        .c3{
+            background: blue;
+        }
+
+        .girar{
+            transform: rotate(45deg);
+        }
+
+    </style>
+</body>
+</html>
