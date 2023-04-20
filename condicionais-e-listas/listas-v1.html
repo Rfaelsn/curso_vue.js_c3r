@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionais e Listas</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="cor in cores" :teste="cor">{{cor}}</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                cores: ['vermelho', 'Azul', 'Verde', 'Amarelo'],
+                pessoas: [
+                    {nome: 'Rafael', idade: 22, peso: 71},
+                    {nome: 'Adriano', idade: 26, peso: 87}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

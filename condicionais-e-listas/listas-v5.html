@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionais e Listas</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(cor, indice) in cores" :key="cor" :cor="cor" :indice="indice">{{indice+1}}º - {{cor}}</li>
+        </ul>
+        <button @click="cores.push('Branca')">Adicionar</button>
+        <hr>
+
+        <template v-for="(cor, indice) in cores">
+            <h1>{{cor}}</h1>
+            <p>{{indice}}</p>
+        </template>
+
+        <!--iterando sobreobjetos-->
+        <hr>
+        <ul>
+            <li v-for="pessoa in pessoas">
+                <div v-for="(valor, chave, indice) in pessoa">
+                    {{indice+1}}) {{chave}}: {{valor}}
+                </div>
+            </li>
+        </ul>
+        <hr>
+        <!--usando atrib via desestruturação-->
+        <ul>
+            <li v-for="{nome, idade, peso} in pessoas">
+                {{nome}}||{{idade}}||{{peso}}
+            </li>
+        </ul>
+        <hr>
+        <!--usando v-for para iterar numeros-->
+        <div v-for="n in 10">{{n}}</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                cores: ['vermelho', 'Azul', 'Verde', 'Amarelo'],
+                pessoas: [
+                    {nome: 'Rafael', idade: 22, peso: 71},
+                    {nome: 'Adriano', idade: 26, peso: 87}
+                ]
+            }
+        });
+    </script>
+
+    <style>
+        li{
+            list-style: none;
+        }
+
+        h1,p{
+            display: inline;
+        }
+    </style>
+</body>
+</html>
