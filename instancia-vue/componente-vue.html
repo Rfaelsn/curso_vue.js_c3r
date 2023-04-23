@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@2"></script>
+    <title>multiplas insancias do vue</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <component></component> -->
+        <comp></comp>
+        <comp></comp>
+        <comp></comp>
+        <comp></comp>
+    </div>
+
+    <script>
+        // todos os componentes compartilhando o mesmo estado
+        // const dados = {
+        //     aula: 'Aula: Usando refs',
+        //     modulo: 'Módulo: Instancia vue'
+        // }
+
+        Vue.component('comp',{
+            template:`
+                <div>
+                    <h1>{{ aula }}</h1>
+                    <h2>{{ modulo }}</h2>
+                    <button @click="alterarAula">Alterar Aula</button>
+                    <button @click="alterarModulo">Alterar Modulo</button>
+                </div>
+            `,
+            data: function (){
+                //return dados;
+                return{
+                    aula: 'Aula: Usando refs',
+                    modulo: 'Módulo: Instancia vue'
+                }
+            },
+            methods:{
+                alterarAula(){
+                    this.aula += '##';
+                },
+                alterarModulo(){
+                    this.modulo += '##';
+                }
+            }
+        })
+
+        const vm = new Vue({
+            el:'#app',
+            // el:'component',
+        })
+        
+    
+    </script>
+</body>
+</html>
