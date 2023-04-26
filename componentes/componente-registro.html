@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+        <app-contador></app-contador>
+        <app-contador></app-contador>
+        <app-contador></app-contador>
+    </div>
+    <hr>
+    <div id="app2">
+        <contador></contador>
+        <contador></contador>
+        <contador></contador>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        const component1 = {
+            template:`
+                <div>
+                    <span>{{contador}}</span>
+                    <button @click="contador++">+</button>
+                    <button @click="contador--">-</button>
+                </div>
+            `,
+            data(){
+                return{
+                    contador: 0
+                }
+            }
+        }
+
+        new Vue({
+            el:'#app1',
+            //registro de forma local
+            components:{
+                'app-contador':component1
+            }
+                
+        });
+
+        new Vue({
+            el:'#app2',
+            //registro de forma local
+            components:{
+                contador: component1
+            }
+        });
+    </script>
+</body>
+</html>
