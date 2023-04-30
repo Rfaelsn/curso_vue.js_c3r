@@ -46,7 +46,11 @@ export default {
         }
     },
     created(){
-        barramento.$on('idadeMudou', idade =>{
+        // barramento.$on('idadeMudou', idade =>{
+        //       this.idadeLocal = idade
+        // })
+
+        barramento.quandoIdadeMudar(idade =>{
               this.idadeLocal = idade
         })
     }

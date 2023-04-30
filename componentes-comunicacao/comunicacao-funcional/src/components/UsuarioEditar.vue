@@ -24,7 +24,8 @@ export default {
         alterarIdade(){
             // this.$emit('idadeMudou',33);s
             this.idadeLocal = 33
-            barramento.$emit('idadeMudou',this.idadeLocal);
+            // barramento.$emit('idadeMudou',this.idadeLocal);
+            barramento.alterarIdade(this.idadeLocal);
         }
     }
 }
